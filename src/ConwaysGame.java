@@ -46,7 +46,7 @@ public class ConwaysGame {
     // These are set in setPattern() below
     // Give a new name to your shape, and put it here.
     public final static String[] modelNames = new String[]
-			{"Clear","Glider","Exploder","10 Cell Row"};    
+			{"Clear","Glider","Exploder","10 Cell Row","Adam's New Shape"};    
     
     // -- End of Place2
     
