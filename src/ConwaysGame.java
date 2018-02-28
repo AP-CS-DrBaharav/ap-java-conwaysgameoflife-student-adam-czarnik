@@ -221,7 +221,54 @@ public class ConwaysGame {
                 cellsNow[30][30 + jj] = 1;
             }
         }
-
+        if (pattern.equals("Adam's New Shape")) {
+            // A
+            cellsNow[20][4] = 1;
+            cellsNow[19][4] = 1;
+            cellsNow[18][4] = 1;
+            cellsNow[17][4] = 1;
+            cellsNow[16][4] = 1;
+            cellsNow[15][4] = 1;
+            cellsNow[14][5] = 1;
+            cellsNow[14][6] = 1;
+            cellsNow[14][7] = 1;
+            cellsNow[15][8] = 1;
+            cellsNow[16][8] = 1;
+            cellsNow[17][8] = 1;
+            cellsNow[18][8] = 1;
+            cellsNow[19][8] = 1;
+            cellsNow[20][8] = 1;
+            cellsNow[17][5] = 1;
+            cellsNow[17][6] = 1;
+            cellsNow[17][7] = 1;
+            // D
+            cellsNow[20][12] = 1;
+            cellsNow[19][11] = 1;
+            cellsNow[18][12] = 1;
+            cellsNow[20][13] = 1;
+            cellsNow[19][13] = 1;
+            cellsNow[18][13] = 1;
+            cellsNow[17][13] = 1;
+            cellsNow[16][13] = 1;
+            cellsNow[15][13] = 1;
+            // A
+            cellsNow[20][17] = 1;
+            cellsNow[19][16] = 1;
+            cellsNow[18][17] = 1;
+            cellsNow[20][18] = 1;
+            cellsNow[19][18] = 1;
+            cellsNow[18][18] = 1;
+            // M
+            cellsNow[20][21] = 1;
+            cellsNow[19][21] = 1;
+            cellsNow[18][21] = 1;
+            cellsNow[18][22] = 1;
+            cellsNow[19][23] = 1;
+            cellsNow[18][24] = 1;
+            cellsNow[18][25] = 1;
+            cellsNow[19][25] = 1;
+            cellsNow[20][25] = 1;
+        }
     }
     // -- End of Place3
 
