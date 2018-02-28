@@ -109,28 +109,7 @@ public class ConwaysGame {
         clearCells(cellsNext);
         for (int rr=0; rr<cellsNow.length; ++rr) {
             for (int cc=0; cc<cellsNow[0].length; ++cc) {
-                int sum;
-                if (rr > 0 && cc > 0 && rr < cellsNow.length-1 && cc < cellsNow[0].length-1) {
-                    sum = cellsNow[rr-1][cc-1] + cellsNow[rr-1][cc] + cellsNow[rr-1][cc+1] + cellsNow[rr][cc-1] + cellsNow[rr][cc+1] + cellsNow[rr+1][cc-1] + cellsNow[rr+1][cc] + cellsNow[rr+1][cc+1];
-                } else {
-                    if (rr == 0) {
-                        if (cc == 0) {
-                            sum = cellsNow[rr][cc+1] + cellsNow[rr+1][cc] + cellsNow[rr+1][cc+1];
-                        } else if (cc == cellsNow[0].length-1) {
-                            sum = cellsNow[rr][cc-1] + cellsNow[rr+1][cc-1] + cellsNow[rr+1][cc];
-                        } else {
-                            sum = cellsNow[rr][cc-1] + cellsNow[rr][cc+1] + cellsNow[rr+1][cc-1] + cellsNow[rr+1][cc] + cellsNow[rr+1][cc+1];
-                        }
-                    } else {
-                        if (cc == 0) {
-                            sum = cellsNow[rr-1][cc] + cellsNow[rr-1][cc+1] + cellsNow[rr][cc+1];
-                        } else if (cc == cellsNow[0].length-1) {
-                            sum = cellsNow[rr-1][cc-1] + cellsNow[rr-1][cc] + cellsNow[rr][cc-1];
-                        } else {
-                            sum = cellsNow[rr-1][cc-1] + cellsNow[rr-1][cc] + cellsNow[rr-1][cc+1] + cellsNow[rr][cc-1] + cellsNow[rr][cc+1];
-                        }
-                    }
-                }
+                int sum = wrapAround(rr-1, cc-1) + wrapAround(rr-1, cc) + wrapAround(rr-1, cc+1) + wrapAround(rr, cc-1) + wrapAround(rr, cc+1) + wrapAround(rr+1, cc-1) + wrapAround(rr+1, cc) + wrapAround(rr+1, cc+1);
                 if (cellsNow[rr][cc] == 1) {
                     if (sum < 2) {
                         cellsNext[rr][cc] = 0;
@@ -156,6 +135,22 @@ public class ConwaysGame {
 	tmp = cellsNow;
         cellsNow = cellsNext;
 	cellsNext  = tmp;
+    }
+    
+    private int wrapAround(int row, int col) {
+        if (row < 0) {
+            row = cellsNow.length-1;
+        }
+        if (row >= cellsNow.length) {
+            row = 0;
+        }
+        if (col < 0) {
+            col = cellsNow[0].length-1;
+        }
+        if (col >= cellsNow[0].length) {
+            col = 0;
+        }
+        return cellsNow[row][col];
     }
 
     private void clearCells(int[][] array) {
