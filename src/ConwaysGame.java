@@ -106,10 +106,31 @@ public class ConwaysGame {
         *
         *  Hint: Just summing all the neighbours will make life easy for you.
         */
-
-        for (int rr=1; rr<cellsNow.length-1; ++rr) {
-            for (int cc=1; cc<cellsNow[0].length-1; ++cc) {
-                int sum = cellsNow[rr-1][cc-1] + cellsNow[rr-1][cc] + cellsNow[rr-1][cc+1] + cellsNow[rr][cc-1] + cellsNow[rr][cc+1] + cellsNow[rr+1][cc-1] + cellsNow[rr+1][cc] + cellsNow[rr+1][cc+1];
+        clearCells(cellsNext);
+        for (int rr=0; rr<cellsNow.length; ++rr) {
+            for (int cc=0; cc<cellsNow[0].length; ++cc) {
+                int sum;
+                if (rr > 0 && cc > 0 && rr < cellsNow.length-1 && cc < cellsNow[0].length-1) {
+                    sum = cellsNow[rr-1][cc-1] + cellsNow[rr-1][cc] + cellsNow[rr-1][cc+1] + cellsNow[rr][cc-1] + cellsNow[rr][cc+1] + cellsNow[rr+1][cc-1] + cellsNow[rr+1][cc] + cellsNow[rr+1][cc+1];
+                } else {
+                    if (rr == 0) {
+                        if (cc == 0) {
+                            sum = cellsNow[rr][cc+1] + cellsNow[rr+1][cc] + cellsNow[rr+1][cc+1];
+                        } else if (cc == cellsNow[0].length-1) {
+                            sum = cellsNow[rr][cc-1] + cellsNow[rr+1][cc-1] + cellsNow[rr+1][cc];
+                        } else {
+                            sum = cellsNow[rr][cc-1] + cellsNow[rr][cc+1] + cellsNow[rr+1][cc-1] + cellsNow[rr+1][cc] + cellsNow[rr+1][cc+1];
+                        }
+                    } else {
+                        if (cc == 0) {
+                            sum = cellsNow[rr-1][cc] + cellsNow[rr-1][cc+1] + cellsNow[rr][cc+1];
+                        } else if (cc == cellsNow[0].length-1) {
+                            sum = cellsNow[rr-1][cc-1] + cellsNow[rr-1][cc] + cellsNow[rr][cc-1];
+                        } else {
+                            sum = cellsNow[rr-1][cc-1] + cellsNow[rr-1][cc] + cellsNow[rr-1][cc+1] + cellsNow[rr][cc-1] + cellsNow[rr][cc+1];
+                        }
+                    }
+                }
                 if (cellsNow[rr][cc] == 1) {
                     if (sum < 2) {
                         cellsNext[rr][cc] = 0;
